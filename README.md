@@ -63,7 +63,7 @@ Here we provide declaration examples of self-tiling, one-to-one and many-to-many
 lat1 = LatentClass(prompt=PROMPT, negative_prompt=NEGATIVE_PROMPT, side_id=[1, 1, 2, 2],
                    side_dir=['cw', 'ccw', 'cw', 'ccw'])
 ```
-This examples represents a self-tiling scenario where I<sub>1</sub> would seamlessly connect to itself on the X / Y axis.
+This example represents a self-tiling scenario where I<sub>1</sub> would seamlessly connect to itself on the X / Y axis.
 
 ### One-to-one
 <img src="images/one.png" height="100">
@@ -74,7 +74,7 @@ lat1 = LatentClass(prompt=PROMPT1, negative_prompt=NEGATIVE_PROMPT1, side_id=[1,
 lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[2, 1, None, None],
                    side_dir=['cw', 'ccw', None, None])
 ```
-This examples represents a one-to-one scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other on the X axis.
+This example represents a one-to-one scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other on the X axis.
 
 
 ### Many-to-many
@@ -86,7 +86,7 @@ lat1 = LatentClass(prompt=PROMPT1, negative_prompt=NEGATIVE_PROMPT1, side_id=[1,
 lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[1, 1, None, None],
                    side_dir=['cw', 'ccw', None, None])
 ```
-This examples represents a many-to-many scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other and to themselves on the X axis.
+This example represents a many-to-many scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other and to themselves on the X axis.
 
 ### Img2img
 ```python
