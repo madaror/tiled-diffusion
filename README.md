@@ -76,7 +76,7 @@ lat1 = LatentClass(prompt=PROMPT1, negative_prompt=NEGATIVE_PROMPT1, side_id=[1,
 lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[2, 1, None, None],
                    side_dir=['cw', 'ccw', None, None])
 ```
-This examples represents a one-to-one scenario where the I<sub>1</sub> and I<sub>2</sub> could connect to each other on the X axis.
+This examples represents a one-to-one scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other on the X axis.
 
 
 ### Many-to-many
@@ -88,7 +88,7 @@ lat1 = LatentClass(prompt=PROMPT1, negative_prompt=NEGATIVE_PROMPT1, side_id=[1,
 lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[1, 1, None, None],
                    side_dir=['cw', 'ccw', None, None])
 ```
-This examples represents a many-to-many scenario where the I<sub>1</sub> and I<sub>2</sub> could connect to each other and to themselves on the X axis.
+This examples represents a many-to-many scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other and to themselves on the X axis.
 
 ## Citation
 ```bibtex
