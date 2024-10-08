@@ -1,4 +1,5 @@
 # Tiled Diffusion
+This is the official implementation of the paper Tiled Diffusion.
 
 <p align="center">
   <img src="images/teaser.jpg" width="1000">
@@ -29,7 +30,6 @@ This paper presents Tiled Diffusion, a novel approach that extends the capabilit
 
 Tiled Diffusion automates the tiling process, eliminating the need for manual intervention and enhancing creative possibilities in various applications. We demonstrate its effectiveness in three key areas: seamlessly tiling existing images, tiled texture creation, and 360° synthesis. These applications showcase the versatility and potential of our method in addressing complex tiling challenges across different domains of image generation and processing.
 
-This is the official implementation of the paper Tiled Diffusion.
 
 
 
