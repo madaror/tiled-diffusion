@@ -19,6 +19,7 @@ Reichman University
 - [Abstract](#abstract)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Examples](#examples)
 - [Citation](#citation)
 
 ## Abstract
@@ -53,6 +54,41 @@ side_dir=['cw', 'ccw', None, None]
 This means that the right and left sides should connect (the connection pattern must be from different orientations).
 After the model finishes, the `LatentClass` will hold an attribute called `image` which is the result image of the diffusion process.
 For ControlNet / Differential Diffusion / SD 3 / SD XL, please follow the corresponding directories (controlnet, diffdiff, sd3, sdxl) under the file name `example.py` (the same name under each directory).
+
+## Examples
+Here we provide declaration examples of self-tiling, one-to-one and many-to-many scenarios
+
+### Self-tiling
+<img src="images/self.png" height="100">
+
+```python
+lat1 = LatentClass(prompt=PROMPT, negative_prompt=NEGATIVE_PROMPT, side_id=[1, 1, 2, 2],
+                   side_dir=['cw', 'ccw', 'cw', 'ccw'])
+```
+This examples representing a self-tiling scenario where I<sub>1</sub> would seamlessly connect to itself on the X / Y axis.
+
+### One-to-one
+<img src="images/one.png" height="100">
+
+```python
+lat1 = LatentClass(prompt=PROMPT1, negative_prompt=NEGATIVE_PROMPT1, side_id=[1, 2, None, None],
+                   side_dir=['cw', 'ccw', None, None])
+lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[2, 1, None, None],
+                   side_dir=['cw', 'ccw', None, None])
+```
+This examples representing a one-to-one scenario where the I<sub>1</sub> and I<sub>2</sub> could connect to each other on the X axis.
+
+
+### Many-to-many
+<img src="images/many.png" height="100">
+
+```python
+lat1 = LatentClass(prompt=PROMPT1, negative_prompt=NEGATIVE_PROMPT1, side_id=[1, 1, None, None],
+                   side_dir=['cw', 'ccw', None, None])
+lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[1, 1, None, None],
+                   side_dir=['cw', 'ccw', None, None])
+```
+This examples representing a many-to-many scenario where the I<sub>1</sub> and I<sub>2</sub> could connect to each other and to themselves on the X axis.
 
 ## Citation
 ```bibtex
