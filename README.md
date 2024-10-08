@@ -56,7 +56,7 @@ After the model finishes, the `LatentClass` will hold an attribute called `image
 For ControlNet / Differential Diffusion / SD 3 / SD XL, please follow the corresponding directories (controlnet, diffdiff, sd3, sdxl) under the file name `example.py` (the same name under each directory).
 
 ## Examples
-Here we provide declaration examples of self-tiling, one-to-one and many-to-many scenarios
+Here we provide declaration examples of self-tiling, one-to-one and many-to-many scenarios. We also include an example for img2img.
 
 ### Self-tiling
 <img src="images/self.png" height="100">
@@ -90,6 +90,13 @@ lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[1,
 ```
 This examples represents a many-to-many scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other and to themselves on the X axis.
 
+### Img2img
+```python
+lat1 = LatentClass(prompt=PROMPT, negative_prompt=NEGATIVE_PROMPT, side_id=[1, 1, None, None],
+                   side_dir=['cw', 'ccw', None, None], source_image=YOUR_PIL_IMAGE)
+```
+When adding the flag `source_image`, the code will automatically detect and encode it with the VAE to start with that representation in the latent space, instead of using random gaussian noise. 
+The result would be a transformed tiled image on the X axis. (Notice this is a general img2img and not the application `Tiling Existing Images`. To use the application please refer the file `example.py` under the folder `diffdiff`)
 ## Citation
 ```bibtex
 BIBTEX TO BE HERE
