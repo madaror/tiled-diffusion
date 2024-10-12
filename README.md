@@ -1,4 +1,9 @@
 # Tiled Diffusion
+<p style="font-style: italic;">
+A versatile method for generating seamlessly tileable images across diverse domains using integrated constraints in the diffusion process
+</p>
+
+
 > Or Madar, Ohad Fried  
 > Reichman University  
 > In digital image processing and generation, tiling—the seamless connection of disparate images to create a coherent visual field—is crucial for applications such as texture creation, video game asset development, and digital art. Traditionally, tiles have been constructed manually, a method that poses significant limitations in scalability and flexibility. Recent research has attempted to automate this process using generative models. However, current approaches primarily focus on tiling textures and manipulating models for single-image generation, without inherently supporting the creation of multiple interconnected tiles across diverse domains.
