@@ -1,6 +1,6 @@
 # Tiled Diffusion
 <p style="font-style: italic;">
-A versatile method for generating seamlessly tileable images across diverse domains using integrated constraints in the diffusion process
+A novel approach for generating seamlessly tileable images using diffusion models.
 </p>
 
 
