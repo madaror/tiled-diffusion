@@ -115,14 +115,16 @@ lat2 = LatentClass(prompt=PROMPT2, negative_prompt=NEGATIVE_PROMPT2, side_id=[1,
 This example represents a many-to-many scenario where I<sub>1</sub> and I<sub>2</sub> could connect to each other and to themselves on the X axis.
 
 ### Img2img
+Uncomment the img2img lines within the file `run.py`: 
 ```python
-from PIL import Image
-image_path = 'images/sketch-mountains-input.jpg'
-image = Image.open(image_path)
+url = "https://raw.githubusercontent.com/CompVis/stable-diffusion/main/assets/stable-samples/img2img/sketch-mountains-input.jpg"
+response = requests.get(url)
+input_image = Image.open(BytesIO(response.content)).convert("RGB")
+input_image = input_image.resize((768, 512))
 lat1 = LatentClass(prompt=PROMPT, negative_prompt=NEGATIVE_PROMPT, side_id=[1, 1, None, None],
-                   side_dir=['cw', 'ccw', None, None], source_image=image)
+                   side_dir=['cw', 'ccw', None, None], source_image=input_image)
 ```
-When adding the flag `source_image`, the code will automatically detect and encode it with the VAE to start with that representation in the latent space, instead of using random gaussian noise. 
+When adding the flag `source_image`, and attaching to it a PIL image, the code will automatically detect and encode it with the VAE to start with that representation in the latent space, instead of using random gaussian noise. 
 The result would be a transformed tiled image on the X axis. (Notice this is a general img2img and not the application `Tiling Existing Images`. To use the application please refer the file `example.py` under the folder `diffdiff`)
 ## Citation
 ```bibtex

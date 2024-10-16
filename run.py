@@ -1,10 +1,11 @@
 import gc
 import os
-
+import requests
+from PIL import Image
+from io import BytesIO
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
-
 from latent_class import LatentClass
 from model import SDLatentTiling
 
@@ -29,14 +30,13 @@ height = 512
 width = 512
 input_image = None
 
-# IMAGE TO IMAGE #########################
+######################### IMAGE TO IMAGE #########################
 strength = 0.92
 # url = "https://raw.githubusercontent.com/CompVis/stable-diffusion/main/assets/stable-samples/img2img/sketch-mountains-input.jpg"
 # response = requests.get(url)
 # input_image = Image.open(BytesIO(response.content)).convert("RGB")
 # input_image = input_image.resize((768, 512))
-# input_image = input_image.resize((576, 384))
-###########################################
+#################################################################
 
 if input_image:
     width, height = input_image.size
