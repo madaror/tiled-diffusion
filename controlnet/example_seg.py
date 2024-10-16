@@ -22,10 +22,10 @@ image_segmentor = UperNetForSemanticSegmentation.from_pretrained("openmmlab/uper
 pipe.scheduler = UniPCMultistepScheduler.from_config(pipe.scheduler.config)
 pipe.enable_model_cpu_offload()
 
-out_path = r"C:\Or\Msc\Courses\Thesis\Tiled Diffusion\Figures\Supp\SD3\input"
-res_path = r"C:\Or\Msc\Courses\Thesis\Tiled Diffusion\Figures\Supp\SD3_SEG\res"  # Define a new directory for processed images
-init_path = r"C:\Or\Msc\Courses\Thesis\Tiled Diffusion\Figures\Supp\SD3_SEG\init"  # Define a new directory for processed images
-mask_path = r"C:\Or\Msc\Courses\Thesis\Tiled Diffusion\Figures\Supp\SD3_SEG\mask"  # Define a new directory for processed images
+out_path = r"input"
+res_path = r"res"  # Define a new directory for processed images
+init_path = r"init"  # Define a new directory for processed images
+mask_path = r"mask"  # Define a new directory for processed images
 
 for filename in os.listdir(out_path):
     if filename.endswith('.png'):

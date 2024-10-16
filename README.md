@@ -57,7 +57,7 @@ new_latents_arr = model(latents_arr=latents_arr,
 
 lat1_new = new_latents_arr[0]
 lat2_new = new_latents_arr[1]
-t_1 = np.concatenate((lat1_new.image, lat2_new.image, lat1_new.image, lat2_new.image),
+t_1 = np.concatenate((lat1_new.image, lat2_new.image, lat2_new.image, lat1_new.image),
                      axis=1)
 
 plt.imshow(t_1)

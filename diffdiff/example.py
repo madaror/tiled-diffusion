@@ -42,99 +42,19 @@ def preprocess_map(map):
     return map
 
 
-#
-# with Image.open("/home/ubuntu/data/supp/DiffDiff/monkeys.png") as imageFile:
-#     image = preprocess_image(imageFile)
-
-with Image.open("/home/ubuntu/data/supp/DiffDiff/mask.jpg") as mapFile:
+with Image.open("../images/mask.jpg") as mapFile:
     map = preprocess_map(mapFile)
 
 
 
 prompts = [
     "Monkeys in a jungle, cold color palette, muted colors",
-    "Misty mountains at dawn, warm tones",
-    "Desert oasis with camels, vibrant sunset hues",
-    "Snowy forest with a lone wolf, blue-white color scheme",
-    "Tropical beach with palm trees, pastel colors",
-    "Lush green valley with grazing sheep, soft light",
-    "Arctic tundra with polar bears, icy blue tones",
-    "Autumn forest with deer, rich orange and red palette",
-    "Serene lake reflection of mountains, purple twilight",
-    "Savanna grasslands with elephants, golden hour lighting",
-    "Cascading waterfall in rainforest, emerald green dominance",
-    "Barren rocky canyon, earth tones and harsh shadows",
-    "Cherry blossom garden, delicate pink and white hues",
-    "Stormy sea with lighthouse, dramatic dark blues and grays",
-    "Rolling hills of lavender fields, soft purple palette",
-    "Volcanic landscape with lava flow, fiery reds and blacks",
-    "Bamboo forest with giant pandas, misty greens",
-    "Salt flats reflecting clouds, surreal white landscape",
-    "Alpine meadow with wildflowers, vibrant spring colors",
-    "Underwater coral reef, vivid aquatic color spectrum",
-    "Northern lights over snowy peaks, ethereal greens and purples",
-    "Sahara desert sand dunes, golden yellows and oranges",
-    "Moss-covered ancient ruins in forest, mysterious greens",
-    "Fjord with floating icebergs, cool blue tones",
-    "Terraced rice fields, lush greens and reflective waters",
-    "Red rock formations in canyon, warm earth tones",
-    "Misty redwood forest, muted greens and browns",
-    "Tulip fields in bloom, rainbow color palette",
-    "Zen rock garden, minimalist grays and sand tones",
-    "Thunderstorm over plains, dramatic dark purples and blues",
-    "Autumn vineyard at sunset, rich reds and golds",
-    "Frozen waterfall, icy blues and whites",
-    "Mangrove swamp with egrets, murky greens and browns",
-    "Highland moor with wild ponies, misty purples and greens",
-    "Bioluminescent beach at night, glowing blues on dark sand",
-    "Snow-capped mountain reflected in crystal clear lake",
-    "Dense jungle canopy viewed from below, dappled light",
-    "Geothermal hot springs, steamy whites and mineral blues",
-    "Windswept coastal cliffs with seabirds, stormy grays",
-    "Starry night sky over desert rock formations, deep blues and browns"
+    "Misty mountains at dawn, warm tones"
 ]
 
 filenames = [
     "monkeys-jungle",
-    "misty-mountains-dawn",
-    "desert-oasis-camels",
-    "snowy-forest-wolf",
-    "tropical-beach-palms",
-    "green-valley-sheep",
-    "arctic-tundra-polarbears",
-    "autumn-forest-deer",
-    "lake-mountain-reflection",
-    "savanna-elephants",
-    "rainforest-waterfall",
-    "barren-rocky-canyon",
-    "cherry-blossom-garden",
-    "stormy-sea-lighthouse",
-    "lavender-hills",
-    "volcanic-landscape-lava",
-    "bamboo-forest-pandas",
-    "salt-flats-clouds",
-    "alpine-meadow-wildflowers",
-    "underwater-coral-reef",
-    "northern-lights-peaks",
-    "sahara-sand-dunes",
-    "mossy-ruins-forest",
-    "fjord-icebergs",
-    "terraced-rice-fields",
-    "red-rock-canyon",
-    "misty-redwood-forest",
-    "tulip-fields-bloom",
-    "zen-rock-garden",
-    "thunderstorm-plains",
-    "autumn-vineyard-sunset",
-    "frozen-waterfall",
-    "mangrove-swamp-egrets",
-    "highland-moor-ponies",
-    "bioluminescent-beach",
-    "snow-mountain-lake",
-    "dense-jungle-canopy",
-    "geothermal-hot-springs",
-    "windswept-coastal-cliffs",
-    "starry-sky-desert-rocks"
+    "misty-mountains-dawn"
 ]
 negative_prompt = ["blurry, shadow polaroid photo, scary angry pose"]
 index = 0
@@ -172,9 +92,9 @@ for prompt, filename in zip(prompts, filenames):
         orig_tiled_image.paste(image_t, (i * image_t.width, 0))
 
     # save
-    image_t.save(f"/home/ubuntu/data/supp/DiffDiff/orig_image/{filename}.png")
-    orig_tiled_image.save(f"/home/ubuntu/data/supp/DiffDiff/orig_image_tiled/{filename}.png")
-    edited_images.save(f"/home/ubuntu/data/supp/DiffDiff/tiled_image/{filename}.png")
-    tiled_image.save(f"/home/ubuntu/data/supp/DiffDiff/tiled_image_tiled/{filename}.png")
+    image_t.save(f"{filename}_orig.png")
+    orig_tiled_image.save(f"{filename}_orig_tiled.png")
+    edited_images.save(f"{filename}_tiled.png")
+    tiled_image.save(f"{filename}_tiled_tiled.png")
     index += 1
 print("Done!")
