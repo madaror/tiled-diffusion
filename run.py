@@ -21,7 +21,7 @@ model = SDLatentTiling(scheduler=scheduler)
 prompt_1 = "Red brick texture"
 prompt_2 = "Green brick texture"
 negative_prompt = "blured, ugly, deformed, disfigured, poor details, bad anatomy, pixelized, bad order"
-inference_steps = 30
+inference_steps = 40
 seed = 151
 cfg_scale = 7.5
 max_replica_width = 5
