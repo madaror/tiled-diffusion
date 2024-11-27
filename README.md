@@ -10,8 +10,8 @@ A novel approach for generating seamlessly tileable images using diffusion model
 This paper presents Tiled Diffusion, a novel approach that extends the capabilities of diffusion models to accommodate the generation of cohesive tiling patterns across various domains of image synthesis that require tiling. Our method supports a wide range of tiling scenarios, from self-tiling to complex many-to-many connections, enabling seamless integration of multiple images.
 Tiled Diffusion automates the tiling process, eliminating the need for manual intervention and enhancing creative possibilities in various applications, such as seamlessly tiling of existing images, tiled texture creation, and 360° synthesis.
 
-<a href="https://sites.google.com/view/tiled-diffusion/home"><img src="https://img.shields.io/badge/arXiv-2306.00950-b31b1b?style=flat&logo=arxiv&logoColor=red"/></a>
-<a href="https://sites.google.com/view/tiled-diffusion/home"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=red" height=20.5></a>
+<a href="https://madaror.github.io/tiled-diffusion.github.io/"><img src="https://img.shields.io/badge/arXiv-2306.00950-b31b1b?style=flat&logo=arxiv&logoColor=red"/></a>
+<a href="https://madaror.github.io/tiled-diffusion.github.io/"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=red" height=20.5></a>
 <br/>
 
 <p align="center">
