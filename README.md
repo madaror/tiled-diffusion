@@ -126,7 +126,15 @@ lat1 = LatentClass(prompt=PROMPT, negative_prompt=NEGATIVE_PROMPT, side_id=[1, 1
 ```
 When adding the flag `source_image`, and attaching to it a PIL image, the code will automatically detect and encode it with the VAE to start with that representation in the latent space, instead of using random gaussian noise. 
 The result would be a transformed tiled image on the X axis. (Notice this is a general img2img and not the application `Tiling Existing Images`. To use the application please refer the file `example.py` under the folder `diffdiff`)
-## Citation
+## BibTeX
 ```bibtex
-BIBTEX TO BE HERE
+@misc{madar2024tileddiffusion,
+      title={Tiled Diffusion}, 
+      author={Or Madar and Ohad Fried},
+      year={2024},
+      eprint={2412.15185},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2412.15185}, 
+}
 ```
