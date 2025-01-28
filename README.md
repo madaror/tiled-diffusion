@@ -126,6 +126,41 @@ lat1 = LatentClass(prompt=PROMPT, negative_prompt=NEGATIVE_PROMPT, side_id=[1, 1
 ```
 When adding the flag `source_image`, and attaching to it a PIL image, the code will automatically detect and encode it with the VAE to start with that representation in the latent space, instead of using random gaussian noise. 
 The result would be a transformed tiled image on the X axis. (Notice this is a general img2img and not the application `Tiling Existing Images`. To use the application please refer the file `example.py` under the folder `diffdiff`)
+
+## Creating Animated GIFs
+After generating tileable images, you can create seamless animated GIFs that demonstrate the tiling effect. We provide a utility script that can create animations in various directions (horizontal, vertical, and diagonal).
+```python
+from gif_creator import process_directory
+
+# Process all images in a directory
+process_directory(
+    input_dir="path/to/generated/images",
+    output_dir="path/to/output/gifs",
+    direction="right",          # Choose: left, right, up, down, top_left, bottom_left, top_right, bottom_right
+    duration=5000,             # Duration in milliseconds
+    num_frames=30,             # Number of frames for smoothness
+    target_size=512           # Resize images to reduce GIF file size
+)
+```
+You can also use the command line interface:
+```bash
+python gif_creator.py input_folder output_folder right --target-size 512 --duration 5000 --frames 30
+```
+
+### Parameters
+- `direction`: The direction of the animation (8 possible directions)
+- `duration`: Total duration of the GIF in milliseconds
+- `num_frames`: Number of frames in the animation (more frames = smoother animation)
+- `target_size`: Target size for the longest dimension (to control file size)
+
+### File Size Optimization
+For HD images, it's recommended to use the `target_size` parameter to reduce the output GIF size:
+- 512 pixels: Good balance of quality and file size
+- 256 pixels: Very small file size
+- 1024 pixels: Higher quality but larger file size
+
+The script will maintain the aspect ratio while resizing.
+
 ## BibTeX
 ```bibtex
 @misc{madar2024tileddiffusion,
