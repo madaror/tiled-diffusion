@@ -1,10 +1,36 @@
 from PIL import Image
 import numpy as np
-from typing import Tuple, List, Literal
+from typing import Tuple, List, Literal, Optional
 import os
 from pathlib import Path
 
 Direction = Literal['left', 'right', 'up', 'down', 'top_left', 'bottom_left', 'top_right', 'bottom_right']
+
+
+def resize_image(image: Image.Image, target_size: int) -> Image.Image:
+    """
+    Resize image while maintaining aspect ratio so its longest dimension equals target_size.
+
+    Args:
+        image: PIL Image to resize
+        target_size: Target size for the longest dimension
+
+    Returns:
+        Resized PIL Image
+    """
+    # Get current dimensions
+    width, height = image.size
+
+    # Calculate new dimensions maintaining aspect ratio
+    if width > height:
+        new_width = target_size
+        new_height = int(height * (target_size / width))
+    else:
+        new_height = target_size
+        new_width = int(width * (target_size / height))
+
+    # Resize image with LANCZOS resampling for better quality
+    return image.resize((new_width, new_height), Image.Resampling.LANCZOS)
 
 
 def create_sliding_gif(
@@ -12,7 +38,8 @@ def create_sliding_gif(
         output_path: str,
         direction: Direction = 'right',
         duration: int = 5000,  # Total duration in milliseconds
-        num_frames: int = 30
+        num_frames: int = 30,
+        target_size: Optional[int] = None  # Target size for the longest dimension
 ) -> None:
     """
     Create a sliding GIF from a tileable image with proper cyclic movement.
@@ -23,14 +50,20 @@ def create_sliding_gif(
         direction: Direction of movement
         duration: Total duration of the GIF in milliseconds
         num_frames: Number of frames in the GIF
+        target_size: Optional target size for the longest dimension
     """
     # Load the image
     img = Image.open(image_path)
-    width, height = img.size
 
     # Convert image to RGBA if it isn't already
     if img.mode != 'RGBA':
         img = img.convert('RGBA')
+
+    # Resize image if target_size is specified
+    if target_size is not None:
+        img = resize_image(img, target_size)
+
+    width, height = img.size
 
     # Create a 3x3 tiled image to ensure smooth wrapping
     tiled_width = width * 3
@@ -62,8 +95,7 @@ def create_sliding_gif(
         # Calculate offset for this frame
         progress = i / num_frames
 
-        # Calculate offsets. For diagonal movements, we want to move
-        # one full image width/height over the course of the animation
+        # Calculate offsets
         offset_x = int(progress * width)
         offset_y = int(progress * height)
 
@@ -72,7 +104,6 @@ def create_sliding_gif(
         final_offset_y = offset_y * vector[1]
 
         # The crop box should always be centered on the middle tile
-        # Starting from the center tile (at position width, height)
         crop_box = (
             width + final_offset_x,  # left
             height + final_offset_y,  # top
@@ -87,14 +118,15 @@ def create_sliding_gif(
     # Calculate duration per frame
     frame_duration = duration // num_frames
 
-    # Save the GIF
+    # Save the GIF with additional optimization
     frames[0].save(
         output_path,
         save_all=True,
         append_images=frames[1:],
         duration=frame_duration,
         loop=0,
-        optimize=True
+        optimize=True,
+        quality=85  # Slightly reduce quality for smaller file size
     )
 
 
@@ -103,7 +135,8 @@ def process_directory(
         output_dir: str,
         direction: Direction,
         duration: int = 5000,
-        num_frames: int = 30
+        num_frames: int = 30,
+        target_size: Optional[int] = None
 ) -> None:
     """
     Process all images in input directory and create GIFs in output directory.
@@ -114,6 +147,7 @@ def process_directory(
         direction: Direction for the animation
         duration: Duration of each GIF in milliseconds
         num_frames: Number of frames for each GIF
+        target_size: Optional target size for the longest dimension
     """
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
@@ -138,9 +172,15 @@ def process_directory(
                     output_path=output_path,
                     direction=direction,
                     duration=duration,
-                    num_frames=num_frames
+                    num_frames=num_frames,
+                    target_size=target_size
                 )
                 print(f"Created {output_filename}")
+
+                # Print file size
+                size_mb = os.path.getsize(output_path) / (1024 * 1024)
+                print(f"Output file size: {size_mb:.2f} MB")
+
             except Exception as e:
                 print(f"Error processing {filename}: {str(e)}")
 
@@ -159,6 +199,8 @@ if __name__ == "__main__":
                         help='Duration of GIF in milliseconds (default: 5000)')
     parser.add_argument('--frames', type=int, default=30,
                         help='Number of frames in GIF (default: 30)')
+    parser.add_argument('--target-size', type=int, default=512,
+                        help='Target size for longest dimension in pixels (default: 512)')
 
     args = parser.parse_args()
 
@@ -167,5 +209,6 @@ if __name__ == "__main__":
         output_dir=args.output_dir,
         direction=args.direction,
         duration=args.duration,
-        num_frames=args.frames
+        num_frames=args.frames,
+        target_size=args.target_size
     )
