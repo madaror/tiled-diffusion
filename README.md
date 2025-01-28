@@ -128,6 +128,12 @@ When adding the flag `source_image`, and attaching to it a PIL image, the code w
 The result would be a transformed tiled image on the X axis. (Notice this is a general img2img and not the application `Tiling Existing Images`. To use the application please refer the file `example.py` under the folder `diffdiff`)
 
 ## Creating Animated GIFs
+<img src="images/canal1.gif" width="1024">
+<p align="center">
+  <img src="images/polished-marble-texture.gif" width="256">
+  <img src="images/smooth-river-stone-texture.gif" width="256">
+  <img src="images/honeycomb-pattern-texture.gif" width="256">
+</p>
 After generating tileable images, you can create seamless animated GIFs that demonstrate the tiling effect. We provide a utility script that can create animations in various directions (horizontal, vertical, and diagonal).
 ```python
 from gif_creator import process_directory
