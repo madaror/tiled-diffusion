@@ -134,10 +134,10 @@ The result would be a transformed tiled image on the X axis. (Notice this is a g
   <img src="images/smooth-river-stone-texture.gif" width="256">
   <img src="images/honeycomb-pattern-texture.gif" width="256">
 </p>
+
 After generating tileable images, you can create seamless animated GIFs that demonstrate the tiling effect. We provide a utility script that can create animations in various directions (horizontal, vertical, and diagonal).
 ```python
 from gif_creator import process_directory
-
 # Process all images in a directory
 process_directory(
     input_dir="path/to/generated/images",
