@@ -169,13 +169,12 @@ The script will maintain the aspect ratio while resizing.
 
 ## BibTeX
 ```bibtex
-@misc{madar2024tileddiffusion,
-      title={Tiled Diffusion}, 
-      author={Or Madar and Ohad Fried},
-      year={2024},
-      eprint={2412.15185},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2412.15185}, 
+@InProceedings{Madar_2025_CVPR,
+    author    = {Madar, Or and Fried, Ohad},
+    title     = {Tiled Diffusion},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2025}
+
 }
 ```
