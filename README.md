@@ -15,7 +15,7 @@ Tiled Diffusion automates the tiling process, eliminating the need for manual in
 <br/>
 
 <p align="center">
-  <img src="images/teaser.jpg" width="1000">
+  <img src="images/teaser.svg" width="1000">
 </p>
 
 
