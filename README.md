@@ -175,6 +175,5 @@ The script will maintain the aspect ratio while resizing.
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
     year      = {2025}
-
 }
 ```
